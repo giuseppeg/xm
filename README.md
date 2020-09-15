@@ -36,7 +36,7 @@ Commands:
 
 Options:
 
-  --root       Folder to complile (default ./)
+  --root       Folder to compile (default ./)
   --output     Output (destination) folder. This is necessary only when using xm build
   --htmlOnly   Compile and copy only the built HTML files
 ```
