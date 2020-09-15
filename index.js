@@ -129,8 +129,8 @@ run(() => {
 
       if (shouldRebuildRoute) {
         // html files will be built and served from the devDir
-        req.url = path.join(devDir, req.url);
         log(`Serving ${req.url} ...`);
+        req.url = path.join(devDir, req.url);
         const [_, ...newArgs] = args;
         newArgs.unshift(filename);
         spawn("posthtml", {
