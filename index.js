@@ -12,11 +12,15 @@ const cmds = ["dev", "build", "help"];
 const cmd = args.shift();
 
 if (!cmds.includes(cmd)) {
-  log(
-    `Invalid command <u>${cmd || ""}</u>. Valid commands are ${cmds
-      .map((c) => `<u>${c}</u>`)
-      .join(" ")}.`
-  );
+  if (cmd) {
+    log(
+      `Invalid command <u>${cmd || ""}</u>. Valid commands are ${cmds
+        .map((c) => `<u>${c}</u>`)
+        .join(" ")}.`
+    );
+  } else {
+    help();
+  }
   process.exit(1);
 }
 

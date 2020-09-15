@@ -68,9 +68,12 @@ module.exports.help = function help() {
   log(`Usage: ${name} <command> [options]\n`);
 
   log(`Commands:\n`);
-  log(`     <b>dev</b>     Compiles and watches the root folder`, {
-    prefix: false,
-  });
+  log(
+    `     <b>dev</b>     Compiles HTML files on change and serves the root folder`,
+    {
+      prefix: false,
+    }
+  );
   log(`     <b>build</b>   Compiles the HTML files once`, { prefix: false });
   log(`     <b>help</b>    Displays help`, { prefix: false });
 
