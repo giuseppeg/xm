@@ -1,0 +1,40 @@
+{
+  "name": "xm",
+  "version": "1.0.0",
+  "description": "A tiny compiler for HTML that adds imports, slots/fills and markdown tags.",
+  "main": "index.js",
+  "bin": {
+    "xm": "./index.js"
+  },
+  "scripts": {
+    "test:build": "rm -rf test/.tmp && node index.js build --output test/.tmp --root test/cases --config test/cases/config.js",
+    "test:dev": "rm -rf .xm && node index.js dev --root test/cases --config test/cases/config.js",
+    "pretest": "npm run test:build",
+    "test": "node test/test.js",
+    "pretest:snapshot": "npm run test:build",
+    "test:snapshot": "node test/createSnapshot.js",
+    "docs:build": "node index.js build docs.html --htmlOnly --output docs/index.html",
+    "prepublish": "npm run docs:build"
+  },
+  "author": "Giuseppe Gurgone",
+  "license": "MIT",
+  "keywords": [
+    "markdown",
+    "posthtml",
+    "html",
+    "docs generator"
+  ],
+  "dependencies": {
+    "front-matter": "^4.0.2",
+    "posthtml-cli": "^0.7.5",
+    "posthtml-md2html": "^0.0.2",
+    "posthtml-xm-import": "^0.1.0",
+    "sirv": "^1.0.6"
+  },
+  "devDependencies": {
+    "highlight.js": "^10.1.2",
+    "ncp": "^2.0.0",
+    "snapshot-dir": "^1.1.2",
+    "source-map-support": "^0.5.19"
+  }
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<title>₪ xm</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #383545;
+    --fg: #c7c5ce;
+    --main-bg: #2c2a37;
+    --card-bg: #17161d;
+    --card-fg: #e7e6ea;
+    --accent-fg: #eb9344;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
+  h2,
+  h3,
+  h4 {
+    margin-top: 2.5em;
+  }
+  a,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+    color: var(--accent-fg);
+  }
+  a code,
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code {
+    color: var(--accent-fg);
+  }
+  h1 {
+    font-weight: 400;
+    color: var(--card-fg);
+  }
+  main {
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    background-color: var(--main-bg);
+  }
+  @media (min-width: 1000px) {
+    main {
+      max-width: 1000px;
+      padding: 2rem 4rem;
+    }
+  }
+  pre {
+    margin: 2em 0;
+    white-space: pre-wrap;
+  }
+  code {
+    font-family: monaco, monospace;
+    font-size: 0.9em;
+    background-color: var(--card-bg);
+    color: var(--card-fg);
+    padding: 0.1em 0.3em;
+    border-radius: 0.2em;
+  }
+  pre code {
+    display: block;
+    padding: 1em;
+    border-radius: 1em;
+  }
+  #screenshot-1,
+  #screenshot-2 {
+    margin: 0;
+  }
+  .fork {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  footer {
+    text-align: center;
+    margin-top: 2em;
+  }
+  footer a {
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+<main>
+  <div>
+    <h1 id="₪-xm---extensible-html">₪ xm - extensible HTML</h1>
+<p>xm is a tiny compiler for HTML that adds</p>
+<ul>
+<li><code>&lt;import&gt;</code> tag to inline external HTML files</li>
+<li><code>&lt;slot&gt;</code> and <code>&lt;fill&gt;</code> tags to define slots and fill them with content</li>
+<li><code>&lt;markdown&gt;</code> tag to portal into Markdown</li>
+</ul>
+<p id="screenshot-1" align="center">
+  <img src="https://user-images.githubusercontent.com/711311/90286174-9de82c80-de75-11ea-89b2-b8e0fd6c7078.png" width="50%" alt="screenshot of an html template with slots">
+</p>
+<p id="screenshot-2" align="center">
+  <img src="https://user-images.githubusercontent.com/711311/90276504-4ee5cb80-de64-11ea-8ebd-99394ff66297.png" width="100%" alt="screenshot of an html page that imports the previous example and fills the slots">
+</p>
+
+<p>xm CLI comes with a <strong>dev mode</strong> that compiles and serves built HTML.</p>
+<p>Furthermore xm is built on top of <a href="https://posthtml.org/#/cli">posthtml-cli</a> and therefore it is <a href="https://posthtml.org/#/cli?id=options">extensible</a>.</p>
+<h2 id="install">Install</h2>
+<pre><code>npm i -g xm</code></pre><h3 id="usage">Usage</h3>
+<pre><code>Usage: xm &lt;command&gt; [options]
+
+Commands:
+
+  dev     Compiles HTML files on change and serves the root folder
+  build   Compiles the HTML files once
+  help    Displays help
+
+Options:
+
+  --root       Folder to complile (default ./)
+  --output     Output (destination) folder. This is necessary only when using xm build
+  --htmlOnly   Compile and copy only the built HTML files</code></pre><h4 id="import-element"><code>&lt;import&gt;</code> element</h4>
+<p>Allows to inline (import) HTML files into the current one.</p>
+<pre><code class="language-html">&lt;import href=&quot;file.html&quot; /&gt;</code></pre>
+<p>Paths are relative.</p>
+<pre><code class="language-html">&lt;!-- src/folder/index.html --&gt;
+
+&lt;import href=&quot;file.html&quot; /&gt;
+&lt;!-- file.html -&gt; src/folder/file.html --&gt;</code></pre>
+<p>You can prefix paths with <code>/</code> to make them absolute i.e. relative to the <code>--root</code> value.</p>
+<pre><code>$ xm build --root ./src
+# &lt;import href=&quot;file.html&quot; /&gt;
+# -&gt; ./src/file.html</code></pre><h4 id="importing-markdown-files">Importing markdown files</h4>
+<p>xm supports importing <code>.md</code> (markdown) files too. When importing such files the front matter declarations are converted to <code>fill</code> elements.</p>
+<pre><code class="language-html">&lt;style&gt;
+  /* theme */
+&lt;/style&gt;
+&lt;import href=&quot;README.md&quot; /&gt;</code></pre>
+<p>💡 This feature can be used to generate styled docs sites for your open source project!</p>
+<h4 id="slot-and-fill-elements"><code>&lt;slot&gt;</code> and <code>&lt;fill&gt;</code> elements</h4>
+<p>HTML files can define <code>slot</code> elements with an attribute <code>name</code>. slots can be filled when importing HTML files using the <code>fill</code> tag.</p>
+<pre><code class="language-html">&lt;!-- base.html --&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;title&gt;&lt;slot name=&quot;title&quot;&gt;&lt;/slot&gt;&lt;/title&gt;
+&lt;main&gt;
+  &lt;slot name=&quot;main&quot;&gt;&lt;/slot&gt;
+&lt;/main&gt;
+
+&lt;!-- about.html --&gt;
+
+&lt;import href=&quot;base.html&quot;&gt;
+  &lt;fill name=&quot;title&quot;&gt;About&lt;/fill&gt;
+  &lt;fill name=&quot;main&quot;&gt;
+    &lt;h1&gt;About&lt;/h1&gt;
+    &lt;p&gt;welcome&lt;/p&gt;
+  &lt;/fill&gt;
+&lt;/import&gt;
+&lt;footer&gt;Unique to this page&lt;/footer&gt;
+
+&lt;!-- about.html (compiled with xm) --&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;title&gt;About&lt;/title&gt;
+&lt;main&gt;
+  &lt;h1&gt;About&lt;/h1&gt;
+  &lt;p&gt;welcome&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+<p>You can also define a special unnamed <code>slot</code> that will be filled with the <code>import</code> children that are not <code>fill</code> tags:</p>
+<pre><code class="language-html">&lt;!-- base.html --&gt;
+
+&lt;slot&gt;&lt;/slot&gt;
+&lt;footer&gt;&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;&lt;/footer&gt;
+
+&lt;!-- about.html --&gt;
+
+&lt;import href=&quot;base.html&quot;&gt;
+  &lt;fill name=&quot;footer&quot;&gt;good bye&lt;/fill&gt;
+  hello
+  &lt;p&gt;friend&lt;/p&gt;
+&lt;/import&gt;
+
+&lt;!-- about.html (compiled with xm) --&gt;
+
+hello
+&lt;p&gt;friend&lt;/p&gt;
+&lt;footer&gt;good bye&lt;/footer&gt;</code></pre>
+<h4 id="credits">Credits</h4>
+<ul>
+<li><a href="https://twitter.com/Scrum_">Ivan Demidov</a> for helping me out with PRs and PostHTML</li>
+<li><a href="https://github.com/askucher">askucher</a> for transferring ownership of the <code>xm</code> package</li>
+</ul>
+</div>
+  <footer>Powered by <a href="https://github.com/giuseppeg/xm">₪ xm</a></footer>
+  <a class="fork" href="https://github.com/giuseppeg/xm"><img loading="lazy" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+</main>
