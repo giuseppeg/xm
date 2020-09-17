@@ -78,7 +78,7 @@ module.exports.help = function help() {
   log(`     <b>help</b>    Displays help`, { prefix: false });
 
   log(`\nOptions:\n`);
-  log(`     <b>--root</b>       Folder to complile (default ./)`, {
+  log(`     <b>--root</b>       Folder to compile (default ./)`, {
     prefix: false,
   });
   log(
