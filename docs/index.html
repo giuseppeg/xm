@@ -110,6 +110,7 @@
 
 <p>xm CLI comes with a <strong>dev mode</strong> that compiles and serves built HTML.</p>
 <p>Furthermore xm is built on top of <a href="https://posthtml.org/#/cli">posthtml-cli</a> and therefore it is <a href="https://posthtml.org/#/cli?id=options">extensible</a>.</p>
+<p>Are you using xm? Share your site&#39;s URL <a href="https://github.com/giuseppeg/xm/issues/2">here</a>.</p>
 <h2 id="install">Install</h2>
 <pre><code>npm i -g xm</code></pre><h3 id="usage">Usage</h3>
 <pre><code>Usage: xm &lt;command&gt; [options]
@@ -142,6 +143,8 @@ Options:
 &lt;/style&gt;
 &lt;import href=&quot;README.md&quot; /&gt;</code></pre>
 <p>💡 This feature can be used to generate styled docs sites for your open source project!</p>
+<p>If you create a reusable theme for README-like files we encourage you to use the following naming convention:</p>
+<pre><code>xm-theme-&lt;theme-name&gt;</code></pre><p>Share your site or theme URL <a href="https://github.com/giuseppeg/xm/issues/2">here</a>.</p>
 <h4 id="slot-and-fill-elements"><code>&lt;slot&gt;</code> and <code>&lt;fill&gt;</code> elements</h4>
 <p>HTML files can define <code>slot</code> elements with an attribute <code>name</code>. slots can be filled when importing HTML files using the <code>fill</code> tag.</p>
 <pre><code class="language-html">&lt;!-- base.html --&gt;

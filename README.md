@@ -17,6 +17,8 @@ xm CLI comes with a **dev mode** that compiles and serves built HTML.
 
 Furthermore xm is built on top of [posthtml-cli](https://posthtml.org/#/cli) and therefore it is [extensible](https://posthtml.org/#/cli?id=options).
 
+Are you using xm? Share your site's URL [here](https://github.com/giuseppeg/xm/issues/2).
+
 ## Install
 
 ```
@@ -78,6 +80,14 @@ xm supports importing `.md` (markdown) files too. When importing such files the 
 ```
 
 💡 This feature can be used to generate styled docs sites for your open source project!
+
+If you create a reusable theme for README-like files we encourage you to use the following naming convention:
+
+```
+xm-theme-<theme-name>
+```
+
+Share your site or theme URL [here](https://github.com/giuseppeg/xm/issues/2).
 
 #### `<slot>` and `<fill>` elements
 
