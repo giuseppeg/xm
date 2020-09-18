@@ -711,10 +711,10 @@ posthtml-render@^1.2.2, posthtml-render@^1.2.3:
   resolved "https://registry.yarnpkg.com/posthtml-render/-/posthtml-render-1.2.3.tgz#da1cf7ba4efb42cfe9c077f4f41669745de99b6d"
   integrity sha512-rGGayND//VwTlsYKNqdILsA7U/XP0WJa6SMcdAEoqc2WRM5QExplGg/h9qbTuHz7mc2PvaXU+6iNxItvr5aHMg==
 
-posthtml-xm-import@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/posthtml-xm-import/-/posthtml-xm-import-0.1.0.tgz#18fed6253dc91a961d8ce44d709aa7c7363d180e"
-  integrity sha512-VILYENaMxgzdrZW7c2PzjJq/Jd1/+gUCLKoatkNJkrW4NPQsGjmlEBhvMsCYUH0v1ur4/PYrC8uktC9Cg18FkQ==
+posthtml-xm-import@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/posthtml-xm-import/-/posthtml-xm-import-0.1.1.tgz#2de5354eed7ee748191087beb166fc54f5582a7c"
+  integrity sha512-nWe4+S5351JnYVvo9lXp8yerm6OWfML15+lQ0e/r0WL6PQl2M9y3ZR3QvF+n+ur+bY7beTyCeOfitevnr3BRkQ==
 
 posthtml@^0.12.0:
   version "0.12.3"

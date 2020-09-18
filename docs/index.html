@@ -105,7 +105,7 @@
   <img src="https://user-images.githubusercontent.com/711311/90286174-9de82c80-de75-11ea-89b2-b8e0fd6c7078.png" width="50%" alt="screenshot of an html template with slots">
 </p>
 <p id="screenshot-2" align="center">
-  <img src="https://user-images.githubusercontent.com/711311/90276504-4ee5cb80-de64-11ea-8ebd-99394ff66297.png" width="100%" alt="screenshot of an html page that imports the previous example and fills the slots">
+  <img src="https://user-images.githubusercontent.com/711311/93567765-7530e680-f98f-11ea-85ce-b25dba7e47f9.png" width="100%" alt="screenshot of an html page that imports the previous example and fills the slots">
 </p>
 
 <p>xm CLI comes with a <strong>dev mode</strong> that compiles and serves built HTML.</p>
@@ -127,21 +127,21 @@ Options:
   --output     Output (destination) folder. This is necessary only when using xm build
   --htmlOnly   Compile and copy only the built HTML files</code></pre><h4 id="import-element"><code>&lt;import&gt;</code> element</h4>
 <p>Allows to inline (import) HTML files into the current one.</p>
-<pre><code class="language-html">&lt;import href=&quot;file.html&quot; /&gt;</code></pre>
+<pre><code class="language-html">&lt;import src=&quot;file.html&quot; /&gt;</code></pre>
 <p>Paths are relative.</p>
 <pre><code class="language-html">&lt;!-- src/folder/index.html --&gt;
 
-&lt;import href=&quot;file.html&quot; /&gt;
+&lt;import src=&quot;file.html&quot; /&gt;
 &lt;!-- file.html -&gt; src/folder/file.html --&gt;</code></pre>
 <p>You can prefix paths with <code>/</code> to make them absolute i.e. relative to the <code>--root</code> value.</p>
 <pre><code>$ xm build --root ./src
-# &lt;import href=&quot;file.html&quot; /&gt;
+# &lt;import src=&quot;file.html&quot; /&gt;
 # -&gt; ./src/file.html</code></pre><h4 id="importing-markdown-files">Importing markdown files</h4>
 <p>xm supports importing <code>.md</code> (markdown) files too. When importing such files the front matter declarations are converted to <code>fill</code> elements.</p>
 <pre><code class="language-html">&lt;style&gt;
   /* theme */
 &lt;/style&gt;
-&lt;import href=&quot;README.md&quot; /&gt;</code></pre>
+&lt;import src=&quot;README.md&quot; /&gt;</code></pre>
 <p>💡 This feature can be used to generate styled docs sites for your open source project!</p>
 <p>If you create a reusable theme for README-like files we encourage you to use the following naming convention:</p>
 <pre><code>xm-theme-&lt;theme-name&gt;</code></pre><p>Share your site or theme URL <a href="https://github.com/giuseppeg/xm/issues/2">here</a>.</p>
@@ -157,7 +157,7 @@ Options:
 
 &lt;!-- about.html --&gt;
 
-&lt;import href=&quot;base.html&quot;&gt;
+&lt;import src=&quot;base.html&quot;&gt;
   &lt;fill name=&quot;title&quot;&gt;About&lt;/fill&gt;
   &lt;fill name=&quot;main&quot;&gt;
     &lt;h1&gt;About&lt;/h1&gt;
@@ -182,7 +182,7 @@ Options:
 
 &lt;!-- about.html --&gt;
 
-&lt;import href=&quot;base.html&quot;&gt;
+&lt;import src=&quot;base.html&quot;&gt;
   &lt;fill name=&quot;footer&quot;&gt;good bye&lt;/fill&gt;
   hello
   &lt;p&gt;friend&lt;/p&gt;

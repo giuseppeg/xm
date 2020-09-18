@@ -1,6 +1,6 @@
 {
   "name": "posthtml-xm-import",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Adds support for import, slot and fill tags",
   "main": "index.js",
   "scripts": {

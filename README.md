@@ -10,7 +10,7 @@ xm is a tiny compiler for HTML that adds
   <img src="https://user-images.githubusercontent.com/711311/90286174-9de82c80-de75-11ea-89b2-b8e0fd6c7078.png" width="50%" alt="screenshot of an html template with slots">
 </p>
 <p id="screenshot-2" align="center">
-  <img src="https://user-images.githubusercontent.com/711311/90276504-4ee5cb80-de64-11ea-8ebd-99394ff66297.png" width="100%" alt="screenshot of an html page that imports the previous example and fills the slots">
+  <img src="https://user-images.githubusercontent.com/711311/93567765-7530e680-f98f-11ea-85ce-b25dba7e47f9.png" width="100%" alt="screenshot of an html page that imports the previous example and fills the slots">
 </p>
 
 xm CLI comes with a **dev mode** that compiles and serves built HTML.
@@ -48,7 +48,7 @@ Options:
 Allows to inline (import) HTML files into the current one.
 
 ```html
-<import href="file.html" />
+<import src="file.html" />
 ```
 
 Paths are relative.
@@ -56,7 +56,7 @@ Paths are relative.
 ```html
 <!-- src/folder/index.html -->
 
-<import href="file.html" />
+<import src="file.html" />
 <!-- file.html -> src/folder/file.html -->
 ```
 
@@ -64,7 +64,7 @@ You can prefix paths with `/` to make them absolute i.e. relative to the `--root
 
 ```
 $ xm build --root ./src
-# <import href="file.html" />
+# <import src="file.html" />
 # -> ./src/file.html
 ```
 
@@ -76,7 +76,7 @@ xm supports importing `.md` (markdown) files too. When importing such files the 
 <style>
   /* theme */
 </style>
-<import href="README.md" />
+<import src="README.md" />
 ```
 
 💡 This feature can be used to generate styled docs sites for your open source project!
@@ -104,7 +104,7 @@ HTML files can define `slot` elements with an attribute `name`. slots can be fil
 
 <!-- about.html -->
 
-<import href="base.html">
+<import src="base.html">
   <fill name="title">About</fill>
   <fill name="main">
     <h1>About</h1>
@@ -133,7 +133,7 @@ You can also define a special unnamed `slot` that will be filled with the `impor
 
 <!-- about.html -->
 
-<import href="base.html">
+<import src="base.html">
   <fill name="footer">good bye</fill>
   hello
   <p>friend</p>

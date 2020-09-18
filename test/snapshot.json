@@ -7,5 +7,7 @@
   "nested/nested/nested/_nested.html": "16fa3661c54cf0d822406e6d79683fe0",
   "nested/nested/nested/page.html": "cbdf34c25e3969fec4653249d1fcc919",
   "simple/_base.html": "305317b853a0c126acf2e88eb5d15e20",
-  "simple/index.html": "ee61e485389c4f5e4de7c67a52f8dbd1"
+  "simple/index.html": "ee61e485389c4f5e4de7c67a52f8dbd1",
+  "template/_base.html": "6545b9cca12a58354ad3e4b1d8589e58",
+  "template/index.html": "1892438182eaaf8541d303c7e826054a"
 }
