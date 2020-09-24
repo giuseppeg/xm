@@ -148,5 +148,5 @@ hello
 
 #### Credits
 
-- [Ivan Demidov](https://twitter.com/Scrum_) for helping me out with PRs and PostHTML
+- [Ivan Demidov](https://github.com/scrum) for helping me out with PRs and PostHTML
 - [askucher](https://github.com/askucher) for transferring ownership of the `xm` package
