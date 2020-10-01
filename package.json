@@ -1,6 +1,6 @@
 {
   "name": "xm",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A tiny compiler for HTML that adds imports, slots/fills and markdown tags.",
   "main": "index.js",
   "bin": {
