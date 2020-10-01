@@ -75,7 +75,9 @@ args.push("posthtml-md2html");
 args.push("--posthtml-md2html.gfm");
 args.push("true");
 
-fs.rmdirSync(outDir, { recursive: true });
+if (fs.existsSync(outDir)) {
+  fs.rmdirSync(outDir, { recursive: true });
+}
 
 const htmlOnlyIndex = args.findIndex((a) => a === "-x" || a === "--htmlOnly");
 const run =
