@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "front-matter": "^4.0.2",
+    "ncp": "^2.0.0",
     "posthtml-cli": "^0.7.5",
     "posthtml-md2html": "^0.0.2",
     "posthtml-xm-import": "^0.1.1",
@@ -33,7 +34,6 @@
   },
   "devDependencies": {
     "highlight.js": "^10.1.2",
-    "ncp": "^2.0.0",
     "snapshot-dir": "^1.1.2",
     "source-map-support": "^0.5.19"
   }
