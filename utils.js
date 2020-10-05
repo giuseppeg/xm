@@ -88,7 +88,13 @@ module.exports.help = function help() {
     }
   );
   log(
-    `     <b>--htmlOnly</b>   Compiles and copies only the built HTML files\n`,
+    `     <b>--htmlOnly</b>   Compiles and copies only the built HTML files`,
+    {
+      prefix: false,
+    }
+  );
+  log(
+    `     <b>--port</b>       Port used for the dev server\n`,
     {
       prefix: false,
     }
