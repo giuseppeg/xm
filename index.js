@@ -18,10 +18,11 @@ if (!cmds.includes(cmd)) {
         .map((c) => `<u>${c}</u>`)
         .join(" ")}.`
     );
+    process.exit(1);
   } else {
     help();
+    process.exit(0);
   }
-  process.exit(1);
 }
 
 if (cmd === "help" || args.some((a) => a === "-h" || a === "--help")) {
@@ -30,8 +31,9 @@ if (cmd === "help" || args.some((a) => a === "-h" || a === "--help")) {
 }
 
 const isDev = cmd === "dev";
-const portOptionIndex = args.findIndex((a) => a === "-p" || a === "--port")
-let port = 5000
+
+const portOptionIndex = args.findIndex((a) => a === "-p" || a === "--port");
+let port = 5000;
 if (~portOptionIndex && args[portOptionIndex + 1]) {
   port = args[portOptionIndex + 1];
   args.splice(portOptionIndex, 2);
