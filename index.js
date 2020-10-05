@@ -31,7 +31,11 @@ if (cmd === "help" || args.some((a) => a === "-h" || a === "--help")) {
 
 const isDev = cmd === "dev";
 const portOptionIndex = args.findIndex((a) => a === "-p" || a === "--port")
-const port = (~portOptionIndex && args[portOptionIndex + 1]) || 5000
+let port = 5000
+if (~portOptionIndex && args[portOptionIndex + 1]) {
+  port = args[portOptionIndex + 1];
+  args.splice(portOptionIndex, 2);
+}
 
 const rootDir = args.reduce((rootDir, option, index) => {
   if (["-r", "--root"].includes(option) && args[index + 1]) {

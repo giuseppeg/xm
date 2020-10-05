@@ -94,7 +94,7 @@ module.exports.help = function help() {
     }
   );
   log(
-    `     <b>--port</b>       Port used for the dev server\n`,
+    `     <b>--port</b>       Port used for the dev server (default: 5000)\n`,
     {
       prefix: false,
     }
