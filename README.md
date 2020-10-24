@@ -121,6 +121,7 @@ HTML files can define `slot` elements with an attribute `name`. slots can be fil
   <h1>About</h1>
   <p>welcome</p>
 </main>
+<footer>Unique to this page</footer>
 ```
 
 You can also define a special unnamed `slot` that will be filled with the `import` children that are not `fill` tags:
