@@ -1,10 +1,10 @@
 {
   "name": "xm",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A tiny compiler for HTML that adds imports, slots/fills and markdown tags.",
   "main": "index.js",
   "bin": {
-    "xm": "./index.js"
+    "xm": "index.js"
   },
   "scripts": {
     "test:build": "rm -rf test/.tmp && node index.js build --output test/.tmp --root test/cases --config test/cases/config.js",
