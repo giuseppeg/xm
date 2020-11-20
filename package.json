@@ -14,7 +14,7 @@
     "pretest:snapshot": "npm run test:build",
     "test:snapshot": "node test/createSnapshot.js",
     "docs:build": "node index.js build docs.html --htmlOnly --output docs/index.html",
-    "prepublish": "npm run docs:build"
+    "prepublishOnly": "npm run docs:build"
   },
   "author": "Giuseppe Gurgone",
   "license": "MIT",
@@ -26,6 +26,8 @@
   ],
   "dependencies": {
     "front-matter": "^4.0.2",
+    "glob": "^7.1.6",
+    "just-clone": "^3.1.0",
     "ncp": "^2.0.0",
     "posthtml-cli": "^0.8.1",
     "posthtml-md2html": "^0.0.2",

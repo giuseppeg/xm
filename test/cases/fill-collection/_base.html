@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title><slot name="title">title fail</slot></title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="content">
+      <slot name="content">content fail</slot>
+      <slot>unnamed fail</slot>
+      <slot name="content-after">content-after fail</slot>
+    </div>
+    <footer>
+      <slot name="footer">5</slot>
+    </footer>
+  </body>
+</html>
