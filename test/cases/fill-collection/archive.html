@@ -3,11 +3,11 @@
   <fill name="content">2</fill>
   -- 3 collections
   <ul>
-    <fill collection="posts/*.html">
+    <fill collection="posts/*.{html,md}">
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
-        <p><slot name="xm:permalink">permalink</slot></p>
+        <a slot:href="{xm:permalink}"><slot name="title">link fail</slot></a>
       </li>
     </fill>
   </ul>
@@ -16,7 +16,7 @@
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
-        <p><slot name="link">link fail</slot></p>
+        <a slot:href="{link}"><slot name="title">link fail</slot></a>
       </li>
     </fill>
   </ul>
@@ -26,7 +26,7 @@
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
-        <p><slot name="link">link fail</slot></p>
+        <a slot:href="{link}"><slot name="title">link fail</slot></a>
       </li>
     </fill>
   </ul>
@@ -36,7 +36,7 @@
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
-        <p><slot name="link">link fail</slot></p>
+        <a slot:href="{link}"><slot name="title">link fail</slot></a>
       </li>
     </fill>
   </ul>
