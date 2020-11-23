@@ -32,7 +32,17 @@
   </ul>
 
   <ul>
-    <fill from="collection.js">
+    <fill from="./collection.js">
+      <li>
+        <h1><slot name="title">title fail</slot></h1>
+        <p><slot name="content">content fail</slot></p>
+        <a slot:href="{link}"><slot name="title">link fail</slot></a>
+      </li>
+    </fill>
+  </ul>
+
+  <ul>
+    <fill from="./async.js">
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
