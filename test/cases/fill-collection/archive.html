@@ -3,7 +3,7 @@
   <fill name="content">2</fill>
   -- 3 collections
   <ul>
-    <fill collection="posts/*.{html,md}">
+    <fill from="posts/*.{html,md}">
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
@@ -12,7 +12,7 @@
     </fill>
   </ul>
   <ul>
-    <fill collection="./posts.json">
+    <fill from="./posts.json">
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
@@ -22,7 +22,7 @@
   </ul>
 
   <ul>
-    <fill collection='[{ "title": "1", "content": "2", "link": "/link"}]'>
+    <fill from='[{ "title": "1", "content": "2", "link": "/link"}]'>
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
@@ -32,7 +32,7 @@
   </ul>
 
   <ul>
-    <fill collection="collection.js">
+    <fill from="collection.js">
       <li>
         <h1><slot name="title">title fail</slot></h1>
         <p><slot name="content">content fail</slot></p>
