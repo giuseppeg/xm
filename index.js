@@ -83,7 +83,7 @@ args.push("--posthtml-md2html.gfm");
 args.push("true");
 
 if (fs.existsSync(outDir)) {
-  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.rmdirSync(outDir, { recursive: true });
 }
 
 const htmlOnlyIndex = args.findIndex((a) => a === "-x" || a === "--htmlOnly");
