@@ -74,9 +74,6 @@ args.push(`posthtml-${name}-import`);
 args.push(`--posthtml-${name}-import.root`);
 args.push(rootDir);
 
-args.push(`--posthtml-${name}-import.strict`);
-args.push("");
-
 args.push("-u");
 args.push("posthtml-md2html");
 args.push("--posthtml-md2html.gfm");
