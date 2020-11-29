@@ -6,17 +6,19 @@
   :root {
     --bg: #383545;
     --fg: #c7c5ce;
-    --main-bg: #2c2a37;
+    --main-bg: #1e1d27;
     --card-bg: #17161d;
     --card-fg: #e7e6ea;
-    --accent-fg: #eb9344;
+    --accent-fg: #e1a368;
   }
   * {
     box-sizing: border-box;
   }
   body {
     margin: 0;
-    background-color: var(--bg);
+    background: var(--main-bg);
+    background: linear-gradient(260deg, var(--bg) 0%, var(--main-bg) 40%, var(--main-bg) 100%);
+    background-attachment: fixed;
     color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -24,7 +26,7 @@
   h2,
   h3,
   h4 {
-    margin-top: 2.5em;
+    margin-top: 3.5em;
   }
   a,
   h2,
@@ -47,7 +49,8 @@
   main {
     margin: 0 auto;
     padding: 1rem 2rem;
-    background-color: var(--main-bg);
+    border-top: 0;
+    border-bottom: 0;
   }
   @media (min-width: 1000px) {
     main {
@@ -61,16 +64,23 @@
   }
   code {
     font-family: monaco, monospace;
-    font-size: 0.9em;
+    font-size: 0.8em;
     background-color: var(--card-bg);
     color: var(--card-fg);
-    padding: 0.1em 0.3em;
-    border-radius: 0.2em;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.2rem;
   }
   pre code {
     display: block;
-    padding: 1em;
+    padding: 1.5rem;
     border-radius: 1em;
+    margin: 2em auto 6em;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease-out
+  }
+  pre code:hover {
+    border-color: var(--card-fg);
   }
   #screenshot-1,
   #screenshot-2 {
@@ -90,6 +100,20 @@
   }
   footer a:hover {
     text-decoration: underline;
+  }
+</style>
+<style>
+  .language-html {
+    color: #6c6783;
+  }
+  .hljs-tag {
+    color: #c7c5ce
+  }
+  .hljs-attr {
+    color: #f0c192
+  }
+  .hljs-string {
+    color: #e1a368
   }
 </style>
 <main>
@@ -127,73 +151,73 @@ Options:
   --output     Output (destination) folder. This is necessary only when using xm build
   --htmlOnly   Compile and copy only the built HTML files</code></pre><h4 id="import-element"><code>&lt;import&gt;</code> element</h4>
 <p>Allows to inline (import) HTML files into the current one.</p>
-<pre><code class="language-html">&lt;import src=&quot;file.html&quot; /&gt;</code></pre>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;file.html&quot;</span> /&gt;</span></code></pre>
 <p>Paths are relative.</p>
-<pre><code class="language-html">&lt;!-- src/folder/index.html --&gt;
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- src/folder/index.html --&gt;</span>
 
-&lt;import src=&quot;file.html&quot; /&gt;
-&lt;!-- file.html -&gt; src/folder/file.html --&gt;</code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;file.html&quot;</span> /&gt;</span>
+<span class="hljs-comment">&lt;!-- file.html -&gt; src/folder/file.html --&gt;</span></code></pre>
 <p>You can prefix paths with <code>/</code> to make them absolute i.e. relative to the <code>--root</code> value.</p>
 <pre><code>$ xm build --root ./src
 # &lt;import src=&quot;file.html&quot; /&gt;
 # -&gt; ./src/file.html</code></pre><h4 id="importing-markdown-files">Importing markdown files</h4>
 <p>xm supports importing <code>.md</code> (markdown) files too. When importing such files the front matter declarations are converted to <code>fill</code> elements.</p>
-<pre><code class="language-html">&lt;style&gt;
-  /* theme */
-&lt;/style&gt;
-&lt;import src=&quot;README.md&quot; /&gt;</code></pre>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+  <span class="hljs-comment">/* theme */</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;README.md&quot;</span> /&gt;</span></code></pre>
 <p>💡 This feature can be used to generate styled docs sites for your open source project!</p>
 <p>If you create a reusable theme for README-like files we encourage you to use the following naming convention:</p>
 <pre><code>xm-theme-&lt;theme-name&gt;</code></pre><p>Share your site or theme URL <a href="https://github.com/giuseppeg/xm/issues/2">here</a>.</p>
 <h4 id="slot-and-fill-elements"><code>&lt;slot&gt;</code> and <code>&lt;fill&gt;</code> elements</h4>
 <p>HTML files can define <code>slot</code> elements with an attribute <code>name</code>. slots can be filled when importing HTML files using the <code>fill</code> tag.</p>
-<pre><code class="language-html">&lt;!-- base.html --&gt;
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- base.html --&gt;</span>
 
-&lt;!DOCTYPE html&gt;
-&lt;title&gt;&lt;slot name=&quot;title&quot;&gt;&lt;/slot&gt;&lt;/title&gt;
-&lt;main&gt;
-  &lt;slot name=&quot;main&quot;&gt;&lt;/slot&gt;
-&lt;/main&gt;
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;main&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
 
-&lt;!-- about.html --&gt;
+<span class="hljs-comment">&lt;!-- about.html --&gt;</span>
 
-&lt;import src=&quot;base.html&quot;&gt;
-  &lt;fill name=&quot;title&quot;&gt;About&lt;/fill&gt;
-  &lt;fill name=&quot;main&quot;&gt;
-    &lt;h1&gt;About&lt;/h1&gt;
-    &lt;p&gt;welcome&lt;/p&gt;
-  &lt;/fill&gt;
-&lt;/import&gt;
-&lt;footer&gt;Unique to this page&lt;/footer&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;base.html&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">fill</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">fill</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">fill</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;main&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>welcome<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">fill</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">import</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Unique to this page<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
 
-&lt;!-- about.html (compiled with xm) --&gt;
+<span class="hljs-comment">&lt;!-- about.html (compiled with xm) --&gt;</span>
 
-&lt;!DOCTYPE html&gt;
-&lt;title&gt;About&lt;/title&gt;
-&lt;main&gt;
-  &lt;h1&gt;About&lt;/h1&gt;
-  &lt;p&gt;welcome&lt;/p&gt;
-&lt;/main&gt;
-&lt;footer&gt;Unique to this page&lt;/footer&gt;</code></pre>
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>welcome<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Unique to this page<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></code></pre>
 <p>You can also define a special unnamed <code>slot</code> that will be filled with the <code>import</code> children that are not <code>fill</code> tags:</p>
-<pre><code class="language-html">&lt;!-- base.html --&gt;
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- base.html --&gt;</span>
 
-&lt;slot&gt;&lt;/slot&gt;
-&lt;footer&gt;&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;&lt;/footer&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
 
-&lt;!-- about.html --&gt;
+<span class="hljs-comment">&lt;!-- about.html --&gt;</span>
 
-&lt;import src=&quot;base.html&quot;&gt;
-  &lt;fill name=&quot;footer&quot;&gt;good bye&lt;/fill&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;base.html&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">fill</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>good bye<span class="hljs-tag">&lt;/<span class="hljs-name">fill</span>&gt;</span>
   hello
-  &lt;p&gt;friend&lt;/p&gt;
-&lt;/import&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>friend<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">import</span>&gt;</span>
 
-&lt;!-- about.html (compiled with xm) --&gt;
+<span class="hljs-comment">&lt;!-- about.html (compiled with xm) --&gt;</span>
 
 hello
-&lt;p&gt;friend&lt;/p&gt;
-&lt;footer&gt;good bye&lt;/footer&gt;</code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>friend<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>good bye<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></code></pre>
 <h4 id="credits">Credits</h4>
 <ul>
 <li><a href="https://github.com/scrum">Ivan Demidov</a> for helping me out with PRs and PostHTML</li>

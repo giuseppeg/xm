@@ -6,17 +6,19 @@
   :root {
     --bg: #383545;
     --fg: #c7c5ce;
-    --main-bg: #2c2a37;
+    --main-bg: #1e1d27;
     --card-bg: #17161d;
     --card-fg: #e7e6ea;
-    --accent-fg: #eb9344;
+    --accent-fg: #e1a368;
   }
   * {
     box-sizing: border-box;
   }
   body {
     margin: 0;
-    background-color: var(--bg);
+    background: var(--main-bg);
+    background: linear-gradient(260deg, var(--bg) 0%, var(--main-bg) 40%, var(--main-bg) 100%);
+    background-attachment: fixed;
     color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -24,7 +26,7 @@
   h2,
   h3,
   h4 {
-    margin-top: 2.5em;
+    margin-top: 3.5em;
   }
   a,
   h2,
@@ -47,7 +49,8 @@
   main {
     margin: 0 auto;
     padding: 1rem 2rem;
-    background-color: var(--main-bg);
+    border-top: 0;
+    border-bottom: 0;
   }
   @media (min-width: 1000px) {
     main {
@@ -61,16 +64,23 @@
   }
   code {
     font-family: monaco, monospace;
-    font-size: 0.9em;
+    font-size: 0.8em;
     background-color: var(--card-bg);
     color: var(--card-fg);
-    padding: 0.1em 0.3em;
-    border-radius: 0.2em;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.2rem;
   }
   pre code {
     display: block;
-    padding: 1em;
+    padding: 1.5rem;
     border-radius: 1em;
+    margin: 2em auto 6em;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease-out
+  }
+  pre code:hover {
+    border-color: var(--card-fg);
   }
   #screenshot-1,
   #screenshot-2 {
@@ -90,6 +100,20 @@
   }
   footer a:hover {
     text-decoration: underline;
+  }
+</style>
+<style>
+  .language-html {
+    color: #6c6783;
+  }
+  .hljs-tag {
+    color: #c7c5ce
+  }
+  .hljs-attr {
+    color: #f0c192
+  }
+  .hljs-string {
+    color: #e1a368
   }
 </style>
 <main>

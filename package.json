@@ -13,7 +13,7 @@
     "test": "node test/test.js",
     "pretest:snapshot": "npm run test:build",
     "test:snapshot": "node test/createSnapshot.js",
-    "docs:build": "node index.js build docs.html --htmlOnly --output docs/index.html",
+    "docs:build": "node index.js build docs.html --htmlOnly --config docs.config.js --output docs/index.html",
     "prepublish": "npm run docs:build"
   },
   "author": "Giuseppe Gurgone",
